@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -140,19 +140,19 @@ const HouseCard = ({ house, onSelect, onFullScreen, isActive, checkInDate, check
 const Lightbox = ({ house, currentIndex, onClose, onNext, onPrev }) => {
   const [direction, setDirection] = useState(0);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (currentIndex < house.images.length - 1) {
       setDirection(1);
       onNext();
     }
-  };
+  }, [currentIndex, house.images.length, onNext]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
       setDirection(-1);
       onPrev();
     }
-  };
+  }, [currentIndex, onPrev]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -168,7 +168,7 @@ const Lightbox = ({ house, currentIndex, onClose, onNext, onPrev }) => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [currentIndex]);
+  }, [currentIndex, handleNext, handlePrev, onClose]);
 
   return (
     <motion.div
@@ -259,7 +259,8 @@ const Lightbox = ({ house, currentIndex, onClose, onNext, onPrev }) => {
   );
 };
 
-export default function SelectHouse() {
+// Компонент-обертка для использования хука useSearchParams
+function SelectHouseContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -326,7 +327,6 @@ export default function SelectHouse() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Основной контент - карусель домов (увеличен отступ для корректного отображения под Navbar и шапкой) */}
       <main className="pt-36 pb-16">
         <div className="max-w-5xl mx-auto px-4">
@@ -413,5 +413,14 @@ export default function SelectHouse() {
 
       <Footer />
     </div>
+  );
+}
+
+// Основной компонент с Suspense для обертки useSearchParams()
+export default function SelectHouse() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Загрузка...</div>}>
+      <SelectHouseContent />
+    </Suspense>
   );
 }

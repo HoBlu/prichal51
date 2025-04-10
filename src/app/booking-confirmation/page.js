@@ -1,12 +1,26 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Globe, User, MessageSquare, Send, Calendar, Home, Clock, Users, ArrowLeft, Wind, Droplets, Shield } from 'lucide-react';
-import { toast, Toaster } from 'react-hot-toast';
 import Link from 'next/link';
 
+// Loading component for Suspense fallback
+const LoadingSpinner = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white">
+    <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}>
+      <Send className="w-12 h-12 text-blue-500" />
+    </motion.div>
+  </div>
+);
+
+// Custom toast replacement
+const Toast = ({ message, type }) => (
+  <div className={`fixed top-4 right-4 z-50 p-4 rounded-md shadow-md ${type === 'error' ? 'bg-red-100 border-red-500 text-red-700' : 'bg-green-100 border-green-500 text-green-700'} border`}>
+    {message}
+  </div>
+);
 
 const houses = [
   {
@@ -71,9 +85,11 @@ const natureAnimation = {
   }
 };
 
-export default function BookingConfirmation() {
+// Main component that uses search params - wrapped in Suspense
+function BookingConfirmationContent() {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [toast, setToast] = useState({ message: '', type: '', visible: false });
 
   const houseId = searchParams?.get('house') || '';
   const checkIn = searchParams?.get('checkIn') || '';
@@ -104,6 +120,20 @@ export default function BookingConfirmation() {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    if (toast.visible) {
+      const timer = setTimeout(() => {
+        setToast({ ...toast, visible: false });
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  // Custom toast functions
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type, visible: true });
+  };
+
   const formatPhoneNumber = (value) => {
     if (!value) return value;
     const phoneNumber = value.replace(/[^\d]/g, '');
@@ -129,18 +159,18 @@ export default function BookingConfirmation() {
     e.preventDefault();
     
     if (!formData.agreeToTerms) {
-      toast.error('Необходимо согласие на обработку персональных данных');
+      showToast('Необходимо согласие на обработку персональных данных', 'error');
       return;
     }
     
     const phoneDigits = formData.phoneNumber.replace(/[^\d]/g, '');
     if (phoneDigits.length !== 11) {
-      toast.error('Пожалуйста, введите корректный номер телефона');
+      showToast('Пожалуйста, введите корректный номер телефона', 'error');
       return;
     }
 
     if (!formData.email.includes('@')) {
-      toast.error('Пожалуйста, введите корректный email');
+      showToast('Пожалуйста, введите корректный email', 'error');
       return;
     }
 
@@ -165,13 +195,13 @@ export default function BookingConfirmation() {
       });
 
       if (response.ok) {
-        toast.success('Заявка успешно отправлена!');
+        showToast('Заявка успешно отправлена!');
         setIsSubmitted(true);
       } else {
         throw new Error('Ошибка сервера');
       }
     } catch (error) {
-      toast.error('Ошибка при отправке данных');
+      showToast('Ошибка при отправке данных', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -188,13 +218,7 @@ export default function BookingConfirmation() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }}>
-          <Send className="w-12 h-12 text-blue-500" />
-        </motion.div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (isSubmitted) {
@@ -239,7 +263,6 @@ export default function BookingConfirmation() {
             </motion.button>
           </Link>
         </motion.div>
-
       </div>
     );
   }
@@ -249,15 +272,7 @@ export default function BookingConfirmation() {
       <div className="absolute inset-0 bg-gradient-to-bl from-blue-100 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-tr from-teal-100 to-transparent" />
       
-      <Toaster position="top-center" toastOptions={{
-        style: {
-          background: 'rgba(255, 255, 255, 0.95)',
-          color: '#374151',
-          borderRadius: '6px',
-          border: '1px solid #e5e7eb',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-        }
-      }} />
+      {toast.visible && <Toast message={toast.message} type={toast.type} />}
       
       <motion.div 
         variants={natureAnimation.wind}
@@ -477,11 +492,18 @@ export default function BookingConfirmation() {
                 </motion.button>
               </Link>
             </div>
-            </form>
+          </form>
         </div>
       </motion.div>
+    </div>
+  );
+}
 
-</div>
-    
+// Main component that wraps the content in Suspense
+export default function BookingConfirmation() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <BookingConfirmationContent />
+    </Suspense>
   );
 }

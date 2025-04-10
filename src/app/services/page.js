@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import Image from 'next/image';
 
 export default function Services() {
   return (
@@ -200,7 +201,15 @@ export default function Services() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div className="bg-white shadow-md rounded-md overflow-hidden">
-              <img src="/images/river.jpg" alt="Горная река" className="w-full h-64 object-cover mb-8" />
+              <div className="relative w-full h-64">
+                <Image 
+                  src="/images/river.jpg" 
+                  alt="Горная река" 
+                  fill 
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-4 text-blue-800">ВБЛИЗИ ГОРНОЙ РЕКИ</h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
@@ -211,7 +220,15 @@ export default function Services() {
             </div>
             
             <div className="bg-white shadow-md rounded-md overflow-hidden">
-              <img src="/images/path.jpg" alt="Освещенная дорожка" className="w-full h-64 object-cover mb-8" />
+              <div className="relative w-full h-64">
+                <Image 
+                  src="/images/path.jpg" 
+                  alt="Освещенная дорожка" 
+                  fill 
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+              </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-4 text-blue-800">ОСВЕЩЕННЫЕ ДОРОЖКИ</h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">

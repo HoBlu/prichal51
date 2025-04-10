@@ -165,7 +165,7 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center justify-center">
               <motion.div
-                whileHover={{ scale: 2.05 }}
+                whileHover={{ scale: 1.55 }}
                 className="h-24 w-24 relative"
               >
                 <Image

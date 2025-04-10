@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Sun, Sunset, Moon } from 'lucide-react';
 
 const ResortPhotoSection = () => {
   const [activeTime, setActiveTime] = useState('day');
   const [activeTab, setActiveTab] = useState('territory');
-  const resortPhoto = '/Dopodvala/Dopodvala.jpg'; // Укажите путь к вашему основному фото
+  const resortPhoto = '/dopodvala/photo1.jpg'; // Укажите путь к вашему основному фото
 
   const timeOptions = [
     { id: 'day', icon: <Sun className="h-5 w-5" />, label: 'День' },
@@ -85,8 +86,17 @@ const ResortPhotoSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
           <div className="lg:col-span-2 relative rounded-lg overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
-            <img src={resortPhoto} alt="Resort Overview" className="w-full h-[32rem] object-cover" />
-            <div className={`absolute inset-0 ${getOverlayOpacity()} transition-opacity duration-1000`}></div>
+            <div className="relative w-full h-96 md:h-[32rem]">
+              <Image 
+                src={resortPhoto} 
+                alt="Resort Overview" 
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                className="object-cover"
+                priority
+              />
+              <div className={`absolute inset-0 ${getOverlayOpacity()} transition-opacity duration-1000`}></div>
+            </div>
           </div>
 
           <div className="space-y-6">

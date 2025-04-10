@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 // Photo gallery data
 const photos = [
@@ -61,12 +62,14 @@ export default function PhotoGallerySection() {
               whileHover={{ y: -5 }}
               onClick={() => setSelectedId(selectedId === photo.id ? null : photo.id)}
             >
-              <div className="relative">
-                <img
+              <div className="relative h-56 w-full">
+                <Image
                   src={photo.src}
                   alt={photo.alt}
-                  loading="lazy"
-                  className="w-full h-56 object-cover transition-opacity duration-300 hover:opacity-90"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-opacity duration-300 hover:opacity-90"
+                  priority={photo.id === 1}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-400/20 to-blue-400/10 opacity-0 hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -82,11 +85,13 @@ export default function PhotoGallerySection() {
                   animate={{ opacity: 1 }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="relative w-full max-w-sm">
-                    <img
+                  <div className="relative w-full max-w-sm h-64">
+                    <Image
                       src={photo.src}
                       alt={photo.alt}
-                      className="w-full rounded-md shadow-lg"
+                      fill
+                      className="rounded-md shadow-lg object-contain"
+                      sizes="(max-width: 640px) 100vw"
                     />
                     <button
                       className="absolute top-2 right-2 bg-white/90 p-1.5 rounded-full shadow"
