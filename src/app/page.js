@@ -321,6 +321,7 @@ export default function Home() {
                 loop
                 muted
                 playsInline
+                webkit-playsinline="true"
                 className="absolute top-0 left-0 w-full h-screen object-cover z-0"
                 preload="auto"
                 // Добавляем несколько форматов для лучшей совместимости
@@ -332,7 +333,7 @@ export default function Home() {
             )}
 
 
-            
+
             
             <motion.div
               initial={{ opacity: 0 }}
