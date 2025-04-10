@@ -47,7 +47,6 @@ const Separator = () => (
   />
 );
 
-// Redesigned modern, minimal guest count controls
 const GuestCountButton = ({ type, onClick, disabled = false }) => (
   <button
     type="button"
@@ -67,13 +66,12 @@ const GuestCountButton = ({ type, onClick, disabled = false }) => (
   </button>
 );
 
-// Redesigned LocationInfo component with minimalist style
 const LocationInfo = () => (
   <motion.div 
     initial={{ opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: 1 }}
-    className="absolute top-24 sm:top-24 md:top-20 lg:top-32 left-0 right-0 mx-auto z-20 max-w-md"
+    className="absolute top-16 sm:top-24 md:top-20 lg:top-32 left-0 right-0 mx-auto z-20 max-w-md px-4"
   >
     <div className="text-center">
       <div className="inline-flex items-center gap-1 text-white backdrop-blur-md bg-black/15 px-4 py-2 rounded-full">
@@ -93,17 +91,16 @@ const LocationInfo = () => (
   </motion.div>
 );
 
-// Redesigned BookingForm component with minimalist Apple-like style
 const BookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDate, guests, handleGuestChange, handleBookingSubmit }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: 1.2 }}
-    className="w-full max-w-3xl px-3 sm:px-4 absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-32 left-0 right-0 mx-auto z-20"
+    className="w-full max-w-3xl px-3 sm:px-4 absolute bottom-12 sm:bottom-20 md:bottom-24 lg:bottom-32 left-0 right-0 mx-auto z-20"
   >
     <Card className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-lg">
       <CardContent className="p-4 sm:p-6">
-        <form onSubmit={handleBookingSubmit} className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-6">
+        <form onSubmit={handleBookingSubmit} className="grid grid-cols-1 md:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
           {/* Check-in */}
           <div className="md:col-span-2 relative group">
             <label 
@@ -117,7 +114,7 @@ const BookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDat
               id="checkInDate"
               value={checkInDate}
               onChange={(e) => setCheckInDate(e.target.value)}
-              className="w-full py-3 px-3 rounded-xl bg-gray-50 border-0 focus:ring-0 text-gray-700 text-sm font-light transition-all duration-300"
+              className="w-full py-2 sm:py-3 px-3 rounded-xl bg-gray-50 border-0 focus:ring-0 text-gray-700 text-sm font-light transition-all duration-300"
               min={new Date().toISOString().split('T')[0]}
               required
             />
@@ -136,7 +133,7 @@ const BookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDat
               id="checkOutDate"
               value={checkOutDate}
               onChange={(e) => setCheckOutDate(e.target.value)}
-              className="w-full py-3 px-3 rounded-xl bg-gray-50 border-0 focus:ring-0 text-gray-700 text-sm font-light transition-all duration-300"
+              className="w-full py-2 sm:py-3 px-3 rounded-xl bg-gray-50 border-0 focus:ring-0 text-gray-700 text-sm font-light transition-all duration-300"
               min={checkInDate || new Date().toISOString().split('T')[0]}
               required
             />
@@ -164,7 +161,7 @@ const BookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDat
             </div>
           </div>
 
-          <div className="md:col-span-6">
+          <div className="md:col-span-6 mt-2 sm:mt-0">
             <button
               type="submit"
               className="w-full bg-black text-white py-3 px-4 rounded-full font-light text-sm transition-all duration-300 hover:bg-black/85 active:scale-98 focus:outline-none"
@@ -178,13 +175,12 @@ const BookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDat
   </motion.div>
 );
 
-// Redesigned minimal scroll indicator
 const ScrollDownIndicator = () => (
   <motion.div 
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ delay: 2, duration: 0.8 }}
-    className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
+    className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
   >
     <motion.div
       animate={{ y: [0, 6, 0] }}
@@ -192,7 +188,7 @@ const ScrollDownIndicator = () => (
       className="flex flex-col items-center"
     >
       <svg 
-        className="w-6 h-6 text-white" 
+        className="w-5 h-5 sm:w-6 sm:h-6 text-white" 
         fill="none" 
         viewBox="0 0 24 24" 
         stroke="currentColor"
@@ -204,7 +200,6 @@ const ScrollDownIndicator = () => (
   </motion.div>
 );
 
-// Main Home component with optimizations
 export default function Home() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -213,7 +208,6 @@ export default function Home() {
   const [guests, setGuests] = useState(2);
   const router = useRouter();
 
-  // Set default check-in and check-out dates
   useEffect(() => {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -222,12 +216,10 @@ export default function Home() {
     setCheckInDate(today.toISOString().split('T')[0]);
     setCheckOutDate(tomorrow.toISOString().split('T')[0]);
     
-    // Simulate loading
     const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle screen size changes with debounce
   useEffect(() => {
     const checkScreenSize = () => {
       setIsSmallScreen(window.innerWidth < 768);
@@ -248,12 +240,10 @@ export default function Home() {
     };
   }, []);
 
-  // Memoize guest change handler
   const handleGuestChange = useCallback((increment) => {
     setGuests((prev) => Math.max(1, Math.min(12, prev + increment)));
   }, []);
 
-  // Improved form submission handler with validations
   const handleBookingSubmit = useCallback((e) => {
     e.preventDefault();
     
@@ -282,7 +272,6 @@ export default function Home() {
     router.push(`/select-house?${query}`);
   }, [checkInDate, checkOutDate, guests, router]);
 
-  // Show loader
   if (isLoading) {
     return (
       <div className="flex items-center justify-center w-screen h-screen bg-gray-50">
@@ -293,7 +282,7 @@ export default function Home() {
       </div>
     );
   }
-
+  console.log(isSmallScreen)
   return (
     <div className={`relative bg-blue-50 min-h-screen ${loftFont.variable}`}>
       <AnimatePresence>
@@ -309,7 +298,7 @@ export default function Home() {
           
           {/* Hero section with video/image */}
           <div className="relative h-screen">
-            {!isSmallScreen ? (
+          {!isSmallScreen ? (
               <>
                 <video
                   autoPlay
@@ -318,23 +307,30 @@ export default function Home() {
                   playsInline
                   className="absolute top-0 left-0 w-full h-screen object-cover z-0"
                   preload="auto"
+                  // Добавляем несколько форматов для лучшей совместимости
                 >
                   <source src="/video/nature.mp4" type="video/mp4" />
+                  <source src="/video/nature.webm" type="video/webm" />
+                  Ваш браузер не поддерживает HTML5 видео.
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30 z-1"></div>
               </>
             ) : (
-              <div 
-                className="absolute inset-0 bg-cover bg-center z-0"
-                style={{
-                  backgroundImage: "url('/images/nature-mobile.jpg')",
-                }}
+                <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-0 left-0 w-full h-screen object-cover z-0"
+                preload="auto"
+                // Добавляем несколько форматов для лучшей совместимости
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
-              </div>
+                <source src="/video/nature.mp4" type="video/mp4" />
+                <source src="/video/nature.webm" type="video/webm" />
+                Ваш браузер не поддерживает HTML5 видео.
+              </video>
             )}
             
-            {/* Redesigned hero content with Apple-like minimalist style */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -351,23 +347,23 @@ export default function Home() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="flex flex-col items-center justify-center space-y-6 mb-8"
+                  className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 mb-6 sm:mb-8"
                 >
-                  <div className="flex items-center justify-center">
-                    <h2 className="text-2xl sm:text-3xl md:text-9xl font-extrabold tracking-widest text-white mr-2">
+                  <div className="flex items-center justify-center flex-wrap">
+                    <h2 className="text-4xl sm:text-5xl md:text-9xl font-extrabold tracking-widest text-white mr-2">
                       ПРИЧАЛ
                     </h2>
                     <Image
-                    src="/images/logo-50.png"
-                    alt="50"
-                    width={192} // Соответствует максимальному размеру md:w-48
-                    height={128} // Сохраняя пропорции
-                    className="object-contain w-14 sm:w-16 md:w-48 lg:w-48"
-                    priority
-                  />
+                      src="/images/logo-50.png"
+                      alt="50"
+                      width={192}
+                      height={128}
+                      className="object-contain w-16 sm:w-20 md:w-48 lg:w-48"
+                      priority
+                    />
                   </div>
                   
-                  <p className="text-xl md:text-2xl font-montserrat italic text-yellow-100">
+                  <p className="text-lg sm:text-xl md:text-2xl font-montserrat italic text-yellow-100">
                     ОТДЫХ - О КОТОРОМ МЕЧТАЮТ
                   </p>
                 </motion.div>
@@ -387,7 +383,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Content sections with smoother animations */}
+          {/* Content sections */}
           <div className="relative z-10 bg-blue-50">
             <Separator />
 
@@ -407,7 +403,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="relative w-full"
+              className="relative w-full px-4 sm:px-0"
             >
               <HouseCarousel />
             </motion.div>
@@ -419,7 +415,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="relative z-10 py-6 sm:py-8 md:py-12 lg:py-16"
+              className="relative z-10 py-6 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-0"
             >
               <EnvironmentSection />
             </motion.div>
@@ -431,6 +427,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
+              className="px-4 sm:px-0"
             >
               <ServicesSection />
             </motion.div>
@@ -442,6 +439,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
+              className="px-4 sm:px-0"
             >
               <Dopodvala />
             </motion.div>
