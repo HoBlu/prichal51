@@ -366,10 +366,11 @@ export default function Home() {
                       priority
                     />
                   </div>
-                  
+                  {!isSmallScreen ? (
                   <p className="text-lg sm:text-xl md:text-2xl font-montserrat italic text-yellow-100">
                     ОТДЫХ - О КОТОРОМ МЕЧТАЮТ
                   </p>
+                  ) : ("")}
                 </motion.div>
               </motion.div>
               
