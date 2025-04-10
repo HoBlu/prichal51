@@ -330,6 +330,9 @@ export default function Home() {
                 Ваш браузер не поддерживает HTML5 видео.
               </video>
             )}
+
+
+            
             
             <motion.div
               initial={{ opacity: 0 }}
