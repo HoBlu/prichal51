@@ -150,14 +150,14 @@ export default function MinimalistHouseCarousel() {
             <div className="w-12 h-px mb-4 bg-teal-500"></div>
 
             <p
-              className="text-sm md:text-base leading-relaxed mb-6 text-gray-700"
+              className="text-3sm md:text-base leading-relaxed mb-6 text-gray-700"
             >
               {house.description}
             </p>
 
             <div className="mb-6">
               <div
-                className="text-sm md:text-base mb-3 font-medium text-blue-800"
+                className="text-3sm md:text-base mb-3 font-medium text-blue-800"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 Удобства
@@ -169,7 +169,7 @@ export default function MinimalistHouseCarousel() {
                       className="w-1.5 h-1.5 rounded-full"
                       style={{ background: idx % 2 === 0 ? '#0ea5e9' : '#14b8a6' }}
                     ></div>
-                    <span className="text-xs md:text-sm">{amenity}</span>
+                    <span className="text-3xs md:text-3sm">{amenity}</span>
                   </div>
                 ))}
               </div>
