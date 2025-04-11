@@ -122,20 +122,24 @@ export default function Navbar() {
   // Обновление времени
   useEffect(() => {
     const updateTime = () => {
-      const now = new Date()
-      const altaiTime = new Date(now.getTime() + (TIMEZONE_OFFSET * 60 * 60 * 1000) - (now.getTimezoneOffset() * 60 * 1000))
+      const now = new Date();
+      // Горный Алтай UTC+7, добавляем разницу с UTC
+      const altaiOffset = 7 * 60 * 60 * 1000;
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
+      const altaiTime = new Date(utc + altaiOffset);
       
       setTime(altaiTime.toLocaleTimeString('ru-RU', { 
         hour: '2-digit', 
-        minute: '2-digit' 
-      }))
-      setDate(`${DAYS[altaiTime.getDay()]}, ${altaiTime.getDate()} ${MONTHS[altaiTime.getMonth()]}`)
-    }
-
-    updateTime()
-    const interval = setInterval(updateTime, 1000)
-    return () => clearInterval(interval)
-  }, [])
+        minute: '2-digit'
+      }));
+      
+      setDate(`${DAYS[altaiTime.getDay()]}, ${altaiTime.getDate()} ${MONTHS[altaiTime.getMonth()]}`);
+    };
+  
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Запрет прокрутки при открытом меню
   useEffect(() => {
