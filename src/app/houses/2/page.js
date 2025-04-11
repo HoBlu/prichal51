@@ -6,11 +6,11 @@ import Image from 'next/image';
 
 // Импорт фотографий из папки houses
 const houseImages = [
-  '/houses/dom1.jpg',
-  '/houses/dom2.jpg',
-  '/houses/dom3.jpg',
-  '/houses/dom4.jpg',
-  '/houses/dom5.jpg'
+  '/domiki/dom1.jpg',
+  '/domiki/dom2.jpg',
+  '/domiki/dom3.jpg',
+  '/domiki/dom4.jpg',
+  '/domiki/dom5.jpg'
 ];
 
 const HousePage = () => {
@@ -21,23 +21,18 @@ const HousePage = () => {
   const carouselImages = [
     {
       url: houseImages[0],
-      alt: "Фасад домика"
     },
     {
       url: houseImages[1],
-      alt: "Гостиная с камином"
     },
     {
       url: houseImages[2],
-      alt: "Спальня с панорамным видом"
     },
     {
       url: houseImages[3],
-      alt: "Кухня-столовая"
     },
     {
       url: houseImages[4],
-      alt: "Веранда с видом на лес"
     }
   ];
 
