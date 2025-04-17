@@ -135,15 +135,26 @@ function BookingConfirmationContent() {
   };
 
   const formatPhoneNumber = (value) => {
-    if (!value) return value;
+    if (!value) return '';
+  
     const phoneNumber = value.replace(/[^\d]/g, '');
-    const phoneNumberLength = phoneNumber.length;
-
-    if (phoneNumberLength < 4) return `+7 (${phoneNumber}`;
-    if (phoneNumberLength < 7) return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-    if (phoneNumberLength < 9) return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
-    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 8)}-${phoneNumber.slice(8, 10)}`;
+  
+    if (phoneNumber === '') return '';
+  
+    // Не добавляем +7, если пользователь стирает
+    const hasInitialSeven = phoneNumber.startsWith('7') || phoneNumber.startsWith('8');
+    const number = hasInitialSeven ? phoneNumber.slice(1) : phoneNumber;
+  
+    const formatted =
+      number.length < 1 ? ''
+      : number.length < 4 ? `+7 (${number}`
+      : number.length < 7 ? `+7 (${number.slice(0, 3)}) ${number.slice(3)}`
+      : number.length < 9 ? `+7 (${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6)}`
+      : `+7 (${number.slice(0, 3)}) ${number.slice(3, 6)}-${number.slice(6, 8)}-${number.slice(8, 10)}`;
+  
+    return formatted;
   };
+  
 
   const handlePhoneChange = (e) => {
     const formatted = formatPhoneNumber(e.target.value);
