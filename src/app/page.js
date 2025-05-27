@@ -351,7 +351,7 @@ const HeroContent = ({ isSmallScreen }) => (
           transition={{ duration: 0.8, delay: 1.3 }}
           className="text-white/90 text-base md:text-lg max-w-lg leading-relaxed"
         >
-          Дом находится в тихом месте среди<br />
+          База находится в тихом месте среди<br />
           гор на берегу Катуни
         </motion.p>
       </motion.div>
