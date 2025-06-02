@@ -91,10 +91,11 @@ export default function Navbar() {
   const [date, setDate] = useState('')
   const [isMobile, setIsMobile] = useState(false)
 
-  // Мемоизация пунктов меню
+  // Мемоизация пунктов меню с добавленной страницей "Частые вопросы"
   const menuItems = useMemo(() => [
     { href: '/gallery', text: 'Фотогалерея' },
     { href: '/services', text: 'Услуги и сервис' },
+    { href: '/faq', text: 'Частые вопросы' },
     { href: '/contact', text: 'Контакты' }
   ], [])
 

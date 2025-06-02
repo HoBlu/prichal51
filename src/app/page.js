@@ -269,12 +269,8 @@ const MobileBookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheck
 );
 
 const ScrollDownIndicator = () => (
-  <motion.div 
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 2, duration: 0.8 }}
-    className="absolute bottom-20 md:bottom-32 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
-  >
+  
+  
     <motion.div
       animate={{ y: [0, 6, 0] }}
       transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -290,7 +286,7 @@ const ScrollDownIndicator = () => (
         <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </motion.div>
-  </motion.div>
+  
 );
 
 const HeroContent = ({ isSmallScreen }) => (
