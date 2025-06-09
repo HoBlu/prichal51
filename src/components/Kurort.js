@@ -214,7 +214,7 @@ const ServicesSection = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span className="inline-block text-blue-500 text-sm tracking-wider mb-2">ПРИЧАЛ №50</span>
+          <span className="inline-block text-blue-500 text-sm tracking-wider mb-2">ЛУНА 50</span>
           <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
             Уютный отдых в горах
           </h2>
