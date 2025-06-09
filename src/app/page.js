@@ -337,7 +337,7 @@ const HeroContent = ({ isSmallScreen }) => (
           className="space-y-2"
         >
           <h4 className="text-4xl md:text-6xl lg:text-7xl font-bold text-emerald-400 leading-tight tracking-wide">
-            С ПРИЧАЛОМ 50
+            С ЛУНОЙ 50
           </h4>
         </motion.div>
         
