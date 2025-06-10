@@ -100,7 +100,7 @@ const ResortPhotoSection = () => {
           </div>
 
           <div className="space-y-6">
-            <div className={`flex space-x-4 p-2 rounded-lg ${activeTime === 'night' ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
+            <div className={`flex space-x-2 p-1 rounded-lg ${activeTime === 'night' ? 'bg-gray-700' : 'bg-white'} shadow-lg`}>
               {tabs.map((tab) => (
                 <button
                   key={tab.id}

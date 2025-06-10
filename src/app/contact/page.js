@@ -18,11 +18,11 @@ import {
 export default function Contact() {
   const contactInfo = {
     phone: '+7 (962) 807-50-50',
-    email: 'prichal50.altai@yandex.ru',
+    email: 'luna50.altai@yandex.ru',
     address: 'Горный Алтай, с. Ая, улица Советская 50',
     workingHours: 'Круглосуточно',
     whatsapp: '79628075050',
-    telegram: 'prichal50_manager',
+    telegram: 'luna50_altai',
   };
 
   return (
@@ -83,8 +83,8 @@ export default function Contact() {
             {[
               { Icon: FaWhatsapp, href: `https://wa.me/${contactInfo.whatsapp}`, label: 'WhatsApp', color: 'bg-blue-500' },
               { Icon: FaTelegram, href: `https://t.me/${contactInfo.telegram}`, label: 'Telegram', color: 'bg-teal-500' },
-              { Icon: FaVk, href: 'https://vk.com/prichal50.altai', label: 'ВКонтакте', color: 'bg-blue-500' },
-              { Icon: FaInstagram, href: 'https://instagram.com/prichal50.altai', label: 'Instagram', color: 'bg-teal-500' },
+              { Icon: FaVk, href: 'https://vk.com/luna50.altai.altai', label: 'ВКонтакте', color: 'bg-blue-500' },
+              { Icon: FaInstagram, href: 'https://instagram.com/luna50.altai', label: 'Instagram', color: 'bg-teal-500' },
             ].map(({ Icon, href, label, color }) => (
               <a 
                 key={label}

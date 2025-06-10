@@ -298,7 +298,7 @@ export default function Navbar() {
                       <h2 className="text-2xl font-semibold text-gray-900 mb-6">Свяжитесь с нами</h2>
                       <div className="bg-gray-50 rounded-xl p-6">
                         <p className="text-xl font-medium text-gray-800 mb-2">+7 (962) 807-50-50</p>
-                        <p className="text-gray-600">prichal50.altai@yandex.ru</p>
+                        <p className="text-gray-600">luna50.altai@yandex.ru</p>
                       </div>
                     </motion.div>
                   </div>

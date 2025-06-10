@@ -30,10 +30,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: <FaInstagram />, url: "https://instagram.com/prichal50.altai", label: "Instagram" },
-    { icon: <FaTiktok />, url: "https://tiktok.com/prichal50.altai", label: "TikTok" },
-    { icon: <FaTelegram />, url: "https://t.me/prichal50_manager", label: "Telegram" },
-    { icon: <FaYoutube />, url: "https://youtube.com/prichal50.altai", label: "YouTube" },
+    { icon: <FaInstagram />, url: "https://instagram.com/luna50.altai", label: "Instagram" },
+    { icon: <FaTiktok />, url: "https://tiktok.com/luna50.altai", label: "TikTok" },
+    { icon: <FaTelegram />, url: "https://t.me/luna50_altai", label: "Telegram" },
+    { icon: <FaYoutube />, url: "https://youtube.com/luna50.altai", label: "YouTube" },
   ];
 
   return (
@@ -50,7 +50,7 @@ export default function Footer() {
         >
           {/* About Section */}
           <motion.div variants={itemVariants} className="lg:col-span-5 space-y-4">
-            <h2 className="text-xl font-bold text-blue-800">База отдыха «ПричалN50»</h2>
+            <h2 className="text-xl font-bold text-blue-800">База отдыха «ЛУНА 50»</h2>
             <p className="text-gray-500 text-sm leading-relaxed">
               Незабываемый отдых в сердце Алтая. Природа, комфорт и уединение для вашего идеального отпуска.
             </p>
@@ -90,7 +90,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <FaEnvelope className="text-blue-500 mr-2 flex-shrink-0" />
                 <a href="mailto:info@altayvalley.ru" className="hover:text-blue-500 transition-colors">
-                prichal50.altai@yandex.ru
+                luna50.altai@yandex.ru
                 </a>
               </li>
             </ul>
@@ -124,7 +124,7 @@ export default function Footer() {
           transition={{ delay: 0.3 }}
           className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500"
         >
-          <p>© {currentYear} Причал N50. Все права защищены.</p>
+          <p>© {currentYear} Луна 50. Все права защищены.</p>
         </motion.div>
       </div>
     </footer>
