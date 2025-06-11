@@ -2,7 +2,7 @@ export async function POST(request) {
   try {
     const data = await request.json();
 
-    const botToken = '7901850943:AAFBmH8OhgoEMaTfzBlOyLFUS1G067uOZKs';
+    const botToken = '8066110580:AAExaJoLj91xMCwyywT-lhA9_0s5OfHLGx4';
     const chatId = '7651716220';
 
     const getContactMethodName = (methodId) => ({
