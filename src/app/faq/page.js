@@ -183,7 +183,7 @@ export default function FAQ() {
             ПОМОЩЬ ГОСТЯМ
           </h1>
           <h3 className="text-lg md:text-xl opacity-80 tracking-widest mb-8">
-            Ответы на все ваши вопросы о базе отдыха Причал 50
+            Ответы на все ваши вопросы о базе отдыха Луна 50
           </h3>
         </div>
         
