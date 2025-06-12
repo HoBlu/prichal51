@@ -7,8 +7,8 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Услуги и сервис | База отдыха</title>
-        <meta name="description" content="Услуги и сервис нашей базы отдыха. Комфортные номера, домики, бассейн и многое другое." />
+        <title>Наш сервис | База отдыха</title>
+        <meta name="description" content=" Наш cервис нашей базы отдыха. Комфортные номера, домики, бассейн и многое другое." />
       </Head>
       
       {/* Hero секция */}
@@ -22,7 +22,7 @@ export default function Services() {
         <div className="relative flex flex-col items-center justify-center h-full text-white px-4">
           <h1 className="text-5xl font-bold tracking-wide mb-6 text-center">УСЛУГИ И СЕРВИС</h1>
           <div className="w-20 h-1 bg-teal-500 mb-6"></div>
-          <p className="text-xl max-w-3xl text-center">Комфорт и уют в уникальном пространстве</p>
+          <p className="text-xl max-w-3xl text-center">Комфорт и уют на уникальной Баззе отдыха Луна 50</p>
         </div>
       </div>
       
@@ -33,8 +33,7 @@ export default function Services() {
             <h2 className="text-3xl font-bold mb-6 text-blue-800">РАЗМЕЩЕНИЕ</h2>
             <div className="w-16 h-1 bg-teal-500 mb-8"></div>
             <p className="text-gray-700 mb-8 leading-relaxed">
-              Мы предлагаем комфортное размещение как в номерах основного двухэтажного коттеджа, так и в 
-              отдельных домиках — для тех, кто ценит уединение и приватность.
+              Мы предлагаем комфортное размещение вгостевом доме с комфортными условиями, доступ к гостевой кухне с завтраками. 
             </p>
             
             <div className="space-y-6">
@@ -101,8 +100,7 @@ export default function Services() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
                   <p className="text-white mb-6 leading-relaxed">
-                    Просторный бассейн размером 16×8 метров расположен напротив номеров основного здания.
-                    Чаша бассейна имеет две зоны — для взрослых и детей, что делает его идеальным местом для 
+                    Просторный бассейн чаша бассейна имеет две зоны — для взрослых и детей, что делает его идеальным местом для 
                     семейного отдыха.
                   </p>
                   <ul className="space-y-2 text-white">
