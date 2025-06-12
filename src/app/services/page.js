@@ -157,9 +157,9 @@ export default function Services() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-blue-800">МИНИ-БАНИ</h3>
+              <h3 className="text-xl font-bold mb-4 text-blue-800">БАНЯ</h3>
               <p className="text-gray-700 mb-6">
-                На территории базы расположены мини-бани, где вы можете расслабиться и восстановить силы 
+                На территории базы расположена баняи, где вы можете расслабиться и восстановить силы 
                 после активного дня.
               </p>
             </div>
