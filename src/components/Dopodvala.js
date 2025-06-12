@@ -16,7 +16,7 @@ const ResortPhotoSection = () => {
   const tabs = [
     { id: 'territory', title: 'Территория', desc: 'Просторная зона с живописными видами и удобствами.' },
     { id: 'accommodation', title: 'Проживание', desc: 'Уютные домики с террасами для комфортного отдыха.' },
-    { id: 'activities', title: 'Развлечения', desc: 'Бассейн, пляж и тропы для активного отдыха.' },
+    { id: 'activities', title: 'Развлечения', desc: 'Бассейн, живописный берег катуни и тропы для активного отдыха.' },
   ];
 
   const advantages = [
