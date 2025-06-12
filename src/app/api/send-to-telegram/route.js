@@ -3,7 +3,7 @@ export async function POST(request) {
     const data = await request.json();
 
     const botToken = '8066110580:AAExaJoLj91xMCwyywT-lhA9_0s5OfHLGx4';
-    const chatId = '7651716220';
+    const channelHandle = '@your_channel_username'; // Например: '@booking_notifications'
 
     const getContactMethodName = (methodId) => ({
       'vk': 'Вконтакте',
@@ -41,13 +41,14 @@ export async function POST(request) {
     `.trim();
 
     const response = await fetch(
-      `https://api.telegram.org/bot${botToken}/sendMessage`,
+      `https://api.telegram.org/bot${botToken}/sendMessage`,   
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          chat_id: chatId,
+          chat_id: channelHandle,
           text: message,
+          parse_mode: 'HTML' // Опционально, но удобно для форматирования
         }),
       }
     );
