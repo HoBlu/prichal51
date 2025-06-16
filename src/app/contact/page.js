@@ -99,32 +99,6 @@ export default function Contact() {
               </a>
             ))}
           </div>
-          
-          <h2 className="text-xl md:text-2xl font-medium mb-5 text-blue-800">
-            Это необходимо сделать как можно скорее
-          </h2>
-          
-          <div className="space-y-5">
-            <article className="flex items-start gap-4 bg-gradient-to-bl from-blue-100 to-transparent p-4 rounded-md border border-gray-200">
-              <div className="min-w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0 border border-blue-400">
-                <FaLeaf className="text-blue-500 text-lg" />
-              </div>
-              <div>
-                <h3 className="text-blue-800 font-medium text-lg mb-1">Если хочется уединения</h3>
-                <p className="text-gray-700 text-sm md:text-base">Представьте, как шелестят кедры, как мягкий утренний туман окутывает реку, а воздух наполнен ароматом свежести.</p>
-              </div>
-            </article>
-            
-            <article className="flex items-start gap-4 bg-gradient-to-tr from-teal-100 to-transparent p-4 rounded-md border border-gray-200">
-              <div className="min-w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0 border border-teal-400">
-                <FaLeaf className="text-teal-500 text-lg" />
-              </div>
-              <div>
-                <h3 className="text-blue-800 font-medium text-lg mb-1">Если хочется энергии воды</h3>
-                <p className="text-gray-700 text-sm md:text-base">Разбегайтесь и ныряйте в тёплый бассейн или бросайтесь в реку с берега! Пусть вода смоет усталость.</p>
-              </div>
-            </article>
-          </div>
         </section>
         
         <section className="mb-12 md:mb-16">
