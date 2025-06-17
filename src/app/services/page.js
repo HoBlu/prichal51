@@ -22,7 +22,7 @@ export default function Services() {
         <div className="relative flex flex-col items-center justify-center h-full text-white px-4">
           <h1 className="text-5xl font-bold tracking-wide mb-6 text-center">УСЛУГИ И СЕРВИС</h1>
           <div className="w-20 h-1 bg-teal-500 mb-6"></div>
-          <p className="text-xl max-w-3xl text-center">Комфорт и уют на уникальной Баззе отдыха Луна 50</p>
+          <p className="text-xl max-w-3xl text-center">Комфорт и уют на уникальной Базе отдыха ЛУНА №50</p>
         </div>
       </div>
       
@@ -33,7 +33,7 @@ export default function Services() {
             <h2 className="text-3xl font-bold mb-6 text-blue-800">РАЗМЕЩЕНИЕ</h2>
             <div className="w-16 h-1 bg-teal-500 mb-8"></div>
             <p className="text-gray-700 mb-8 leading-relaxed">
-              Мы предлагаем комфортное размещение вгостевом доме с комфортными условиями, доступ к гостевой кухне с завтраками. 
+              Мы предлагаем комфортное размещение с комфортными условиями. 
             </p>
             
             <div className="space-y-6">
@@ -61,7 +61,7 @@ export default function Services() {
                 <div className="ml-5">
                   <h3 className="text-xl font-semibold text-blue-800 mb-2">ОТДЕЛЬНЫЕ ДОМИКИ</h3>
                   <p className="text-gray-700">
-                    Уютные домики с личной террасой и всеми удобствами номеров основного здания.
+                    Уютные Гостевы дома с террасой и всеми удобствами номеров основного здания.
                     Идеальный выбор для тех, кто ценит уединение и приватность.
                   </p>
                 </div>
@@ -72,20 +72,20 @@ export default function Services() {
           <div className="bg-blue-50 p-8 shadow-md flex items-center justify-center">
             <div className="grid grid-cols-2 gap-4 w-full">
               <div className="bg-white shadow-sm p-6 text-center">
-                <h3 className="text-2xl font-bold mb-2 text-blue-800">Умный свет</h3>
-                <p className="text-gray-500">Современная система освещения</p>
+                <h3 className="text-2xl font-bold mb-2 text-blue-800">Каждый номер включает в себя</h3>
+                <p className="text-gray-500"></p>
               </div>
               <div className="bg-white shadow-sm p-6 text-center">
-                <h3 className="text-2xl font-bold mb-2 text-blue-800">Тёплые полы</h3>
-                <p className="text-gray-500">Комфорт в любую погоду</p>
+                <h3 className="text-2xl font-bold mb-2 text-blue-800"></h3>
+                <p className="text-gray-500">Двуспальная кровать, Теплый пол в ванной, Микроволновка </p>
               </div>
               <div className="bg-white shadow-sm p-6 text-center">
-                <h3 className="text-2xl font-bold mb-2 text-blue-800">Удобная мебель</h3>
-                <p className="text-gray-500">Из натурального дерева</p>
+                <h3 className="text-2xl font-bold mb-2 text-blue-800"></h3>
+                <p className="text-gray-500">Мини-холодильник, Диван или Двухъярусную кровать</p>
               </div>
               <div className="bg-white shadow-sm p-6 text-center">
-                <h3 className="text-2xl font-bold mb-2 text-blue-800">Чистое бельё</h3>
-                <p className="text-gray-500">И домашние халаты</p>
+                <h3 className="text-2xl font-bold mb-2 text-blue-800"></h3>
+                <p className="text-gray-500">Водонагреватель, Душевая и санузел, Wi-Fi</p>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function Services() {
                       <svg className="h-5 w-5 mr-2 text-white" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      Регулярная очистка и уход
+                      Постоянная фильтрация и подогрев
                     </li>
                   </ul>
                 </div>
