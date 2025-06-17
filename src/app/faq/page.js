@@ -31,11 +31,11 @@ export default function FAQ() {
 
   const contactInfo = {
     phone: '+7 (962) 807-50-50',
-    email: 'prichal50.altai@yandex.ru',
+    email: 'luna50.altai@yandex.ru',
     address: 'Горный Алтай, с. Ая, улица Советская 50',
     workingHours: 'Круглосуточно',
     whatsapp: '79628075050',
-    telegram: 'prichal50_manager',
+    telegram: 'luna50_manager',
   };
 
   const faqData = [
