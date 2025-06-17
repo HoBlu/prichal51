@@ -40,9 +40,9 @@ const HousePage = () => {
     { name: "Wi-Fi", icon: <Wifi size={20} /> },
     { name: "Душевая с санузлом", icon: <ShowerHead size={20} /> },
     { name: "Мини Холодильник", icon: <Refrigerator size={20} /> },
-    { name: "Двуспальная и двухъярусная кровати", icon: <BedDouble size={20} /> },
-    { name: "Постельное белье, халаты, средства гигиены и пр.", icon: <Users size={20} /> },
-    { name: "Дрова для мангала", icon: <FlameKindling size={20} /> },
+    { name: "Двуспальная кровать и диван", icon: <BedDouble size={20} /> },
+    { name: "Постельное белье.", icon: <Users size={20} /> },
+    { name: "Средства гигиены и пр.", icon: <FlameKindling size={20} /> },
   ];
 
   const nextSlide = () => {
@@ -238,7 +238,7 @@ const HousePage = () => {
                     <div className="bg-white p-3 rounded-full shadow-sm text-blue-500">
                       <Calendar size={24} />
                     </div>
-                    <span className="text-gray-700 text-lg">Минимальный срок: 2 ночи</span>
+                    <span className="text-gray-700 text-lg">Минимальный срок: сутки</span>
                   </div>
                   <div className="flex items-center space-x-4">
                     <div className="bg-white p-3 rounded-full shadow-sm text-blue-500">

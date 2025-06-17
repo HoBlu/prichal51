@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import { clsx } from 'clsx';
@@ -48,7 +47,7 @@ const Separator = () => (
 );
 
 const LocationInfo = () => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: 1 }}
@@ -72,221 +71,40 @@ const LocationInfo = () => (
   </motion.div>
 );
 
-// Desktop Booking Form - Full Width
-const DesktopBookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDate, guests, handleGuestChange, handleBookingSubmit }) => (
+const TelegramBookingButton = () => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: 1.2 }}
-    className="absolute bottom-0 left-0 right-0 z-30 hidden md:block"
+    className="absolute bottom-32 left-32 right-32 z-30"
   >
-    <div className="bg-black/30 backdrop-blur-xl border-t border-white/15">
-      <div className="max-w-7xl mx-auto px-8 py-6">
-        <form onSubmit={handleBookingSubmit} className="flex items-center justify-center gap-6">
-          {/* Check-in */}
-          <div className="flex-1 max-w-xs">
-            <label 
-              htmlFor="desktop-checkInDate" 
-              className="block text-sm font-medium text-white/80 tracking-wide uppercase mb-2"
-            >
-              Заезд
-            </label>
-            <input
-              type="date"
-              id="desktop-checkInDate"
-              value={checkInDate}
-              onChange={(e) => setCheckInDate(e.target.value)}
-              className="w-full py-3 px-4 text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
-              min={new Date().toISOString().split('T')[0]}
-              required
-            />
-          </div>
-
-          {/* Check-out */}
-          <div className="flex-1 max-w-xs">
-            <label 
-              htmlFor="desktop-checkOutDate" 
-              className="block text-sm font-medium text-white/80 tracking-wide uppercase mb-2"
-            >
-              Выезд
-            </label>
-            <input
-              type="date"
-              id="desktop-checkOutDate"
-              value={checkOutDate}
-              onChange={(e) => setCheckOutDate(e.target.value)}
-              className="w-full py-3 px-4 text-base rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
-              min={checkInDate || new Date().toISOString().split('T')[0]}
-              required
-            />
-          </div>
-
-          {/* Guests */}
-          <div className="flex-1 max-w-xs">
-            <label className="block text-sm font-medium text-white/80 tracking-wide uppercase mb-2">
-              Гости
-            </label>
-            <div className="flex items-center justify-between bg-white/10 border border-white/20 rounded-lg px-4 py-3 backdrop-blur-sm">
-              <button
-                type="button"
-                onClick={() => handleGuestChange(-1)}
-                disabled={guests <= 1}
-                aria-label="Уменьшить количество гостей"
-                className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out font-medium text-lg focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/20 active:scale-95 cursor-pointer bg-white/10 text-white border border-white/20"
-              >
-                −
-              </button>
-              <div className="flex-1 text-center">
-                <span className="text-base text-white font-medium">
-                  {guests} {guests === 1 ? 'гость' : guests < 5 ? 'гостя' : 'гостей'}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleGuestChange(1)}
-                disabled={guests >= 12}
-                aria-label="Увеличить количество гостей"
-                className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out font-medium text-lg focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/20 active:scale-95 cursor-pointer bg-white/10 text-white border border-white/20"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          {/* Submit button */}
-          <div className="flex-shrink-0">
-            <label className="block text-sm font-medium text-transparent mb-2">
-              .
-            </label>
-            <button
-              type="submit"
-              className="bg-emerald-500/90 hover:bg-emerald-500 text-white py-3 px-8 rounded-lg font-medium text-base transition-all duration-300 active:scale-98 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 shadow-lg min-w-[160px]"
-            >
-              Забронировать
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </motion.div>
-);
-
-// Mobile Booking Form - Compact
-const MobileBookingForm = ({ checkInDate, setCheckInDate, checkOutDate, setCheckOutDate, guests, handleGuestChange, handleBookingSubmit }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, delay: 1.2 }}
-    className="absolute bottom-4 left-4 right-4 z-30 md:hidden"
-  >
-    <div className="rounded-xl overflow-hidden shadow-2xl bg-black/25 backdrop-blur-xl border border-white/15">
-      <div className="p-3 sm:p-4">
-        <form onSubmit={handleBookingSubmit} className="space-y-3">
-          {/* Dates section */}
-          <div className="grid grid-cols-2 gap-2">
-            {/* Check-in */}
-            <div className="space-y-1">
-              <label 
-                htmlFor="mobile-checkInDate" 
-                className="block text-xs font-medium text-white/80 tracking-wide uppercase"
-              >
-                Заезд
-              </label>
-              <input
-                type="date"
-                id="mobile-checkInDate"
-                value={checkInDate}
-                onChange={(e) => setCheckInDate(e.target.value)}
-                className="w-full py-2 px-3 text-xs rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
-                min={new Date().toISOString().split('T')[0]}
-                required
-              />
-            </div>
-
-            {/* Check-out */}
-            <div className="space-y-1">
-              <label 
-                htmlFor="mobile-checkOutDate" 
-                className="block text-xs font-medium text-white/80 tracking-wide uppercase"
-              >
-                Выезд
-              </label>
-              <input
-                type="date"
-                id="mobile-checkOutDate"
-                value={checkOutDate}
-                onChange={(e) => setCheckOutDate(e.target.value)}
-                className="w-full py-2 px-3 text-xs rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
-                min={checkInDate || new Date().toISOString().split('T')[0]}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Guests section */}
-          <div className="space-y-1">
-            <label className="block text-xs font-medium text-white/80 tracking-wide uppercase">
-              Гости
-            </label>
-            <div className="flex items-center justify-between bg-white/10 border border-white/20 rounded-lg px-3 py-2 backdrop-blur-sm">
-              <button
-                type="button"
-                onClick={() => handleGuestChange(-1)}
-                disabled={guests <= 1}
-                aria-label="Уменьшить количество гостей"
-                className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out font-medium text-base focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/20 active:scale-95 cursor-pointer bg-white/10 text-white border border-white/20"
-              >
-                −
-              </button>
-              <div className="flex-1 text-center">
-                <span className="text-sm text-white font-medium">
-                  {guests} {guests === 1 ? 'гость' : guests < 5 ? 'гостя' : 'гостей'}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleGuestChange(1)}
-                disabled={guests >= 12}
-                aria-label="Увеличить количество гостей"
-                className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ease-in-out font-medium text-base focus:outline-none focus:ring-2 focus:ring-white/30 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/20 active:scale-95 cursor-pointer bg-white/10 text-white border border-white/20"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          {/* Submit button */}
-          <button
-            type="submit"
-            className="w-full bg-emerald-500/90 hover:bg-emerald-500 text-white py-2.5 px-4 rounded-lg font-medium text-sm transition-all duration-300 active:scale-98 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 shadow-lg"
-          >
-            Забронировать
-          </button>
-        </form>
-      </div>
-    </div>
+    <a
+      href="https://t.me/luna50bot"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-full bg-[#62c4cc] hover:bg-emerald-500 text-white py-6 px-3 rounded-lg font-medium text-base transition-all duration-300 active:scale-98 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 shadow-lg text-center"
+    >
+      ЗАБРОНИРОВАТЬ
+    </a>
   </motion.div>
 );
 
 const ScrollDownIndicator = () => (
-  
-  
-    <motion.div
-      animate={{ y: [0, 6, 0] }}
-      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-      className="flex flex-col items-center"
+  <motion.div
+    animate={{ y: [0, 6, 0] }}
+    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+    className="flex flex-col items-center"
+  >
+    <svg
+      className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1}
     >
-      <svg 
-        className="w-5 h-5 sm:w-6 sm:h-6 text-white" 
-        fill="none" 
-        viewBox="0 0 24 24" 
-        stroke="currentColor"
-        strokeWidth={1}
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-      </svg>
-    </motion.div>
-  
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </motion.div>
 );
 
 const HeroContent = ({ isSmallScreen }) => (
@@ -329,18 +147,18 @@ const HeroContent = ({ isSmallScreen }) => (
             ВМЕСТЕ
           </motion.h3>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
           className="space-y-2"
         >
-          <h4 className="text-4xl md:text-6xl lg:text-7xl font-bold text-emerald-400 leading-tight tracking-wide">
+          <h4 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#b1f6fc] leading-tight tracking-wide">
             С ЛУНОЙ 50
           </h4>
         </motion.div>
-        
+
         <motion.p
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
@@ -358,19 +176,8 @@ const HeroContent = ({ isSmallScreen }) => (
 export default function Home() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [checkInDate, setCheckInDate] = useState('');
-  const [checkOutDate, setCheckOutDate] = useState('');
-  const [guests, setGuests] = useState(2);
-  const router = useRouter();
 
   useEffect(() => {
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    
-    setCheckInDate(today.toISOString().split('T')[0]);
-    setCheckOutDate(tomorrow.toISOString().split('T')[0]);
-    
     const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
@@ -379,53 +186,21 @@ export default function Home() {
     const checkScreenSize = () => {
       setIsSmallScreen(window.innerWidth < 768);
     };
-    
+
     checkScreenSize();
-    
+
     let timeoutId;
     const handleResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(checkScreenSize, 150);
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => {
       clearTimeout(timeoutId);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  const handleGuestChange = useCallback((increment) => {
-    setGuests((prev) => Math.max(1, Math.min(12, prev + increment)));
-  }, []);
-
-  const handleBookingSubmit = useCallback((e) => {
-    e.preventDefault();
-    
-    const checkIn = new Date(checkInDate);
-    const checkOut = new Date(checkOutDate);
-    
-    if (!checkOutDate) {
-      alert('Пожалуйста, выберите дату выезда');
-      return;
-    }
-    
-    if (checkOut <= checkIn) {
-      alert('Дата выезда должна быть позже даты заезда');
-      return;
-    }
-    
-    const diffTime = Math.abs(checkOut - checkIn);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    if (diffDays > 30) {
-      const confirm = window.confirm('Вы выбрали период больше 30 дней. Продолжить?');
-      if (!confirm) return;
-    }
-    
-    const query = `checkIn=${encodeURIComponent(checkInDate)}&checkOut=${encodeURIComponent(checkOutDate)}&guests=${guests}`;
-    router.push(`/select-house?${query}`);
-  }, [checkInDate, checkOutDate, guests, router]);
 
   if (isLoading) {
     return (
@@ -450,7 +225,7 @@ export default function Home() {
           className="w-full"
         >
           <LocationInfo />
-          
+
           {/* Hero section with video/image */}
           <div className="relative h-screen">
             {!isSmallScreen ? (
@@ -486,29 +261,10 @@ export default function Home() {
             )}
 
             <HeroContent isSmallScreen={isSmallScreen} />
-            
-            {/* Desktop Booking Form */}
-            <DesktopBookingForm
-              checkInDate={checkInDate}
-              setCheckInDate={setCheckInDate}
-              checkOutDate={checkOutDate}
-              setCheckOutDate={setCheckOutDate}
-              guests={guests}
-              handleGuestChange={handleGuestChange}
-              handleBookingSubmit={handleBookingSubmit}
-            />
 
-            {/* Mobile Booking Form */}
-            <MobileBookingForm
-              checkInDate={checkInDate}
-              setCheckInDate={setCheckInDate}
-              checkOutDate={checkOutDate}
-              setCheckOutDate={setCheckOutDate}
-              guests={guests}
-              handleGuestChange={handleGuestChange}
-              handleBookingSubmit={handleBookingSubmit}
-            />
-            
+            {/* Telegram Booking Button */}
+            <TelegramBookingButton />
+
             <ScrollDownIndicator />
           </div>
 
