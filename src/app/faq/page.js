@@ -35,7 +35,7 @@ export default function FAQ() {
     address: 'Горный Алтай, с. Ая, улица Советская 50',
     workingHours: 'Круглосуточно',
     whatsapp: '79628075050',
-    telegram: 'luna50_manager',
+    telegram: 'luna50_altai',
   };
 
   const faqData = [
