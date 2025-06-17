@@ -35,7 +35,7 @@ export default function FAQ() {
     address: 'Горный Алтай, с. Ая, улица Советская 50',
     workingHours: 'Круглосуточно',
     whatsapp: '79628075050',
-    telegram: 'luna50_altai',
+    telegram: 'luna50_manager',
   };
 
   const faqData = [
@@ -375,7 +375,7 @@ export default function FAQ() {
               <div className="space-y-3">
                 {[
                   { Icon: MessageCircle, href: `https://wa.me/${contactInfo.whatsapp}`, label: 'WhatsApp', color: 'text-green-500' },
-                  { Icon: MessageCircle, href: `https://t.me/${contactInfo.telegram}`, label: 'Telegram', color: 'text-blue-500' },
+                  { Icon: MessageCircle, href: `https://t.me/luna50_altai`, label: 'Telegram', color: 'text-blue-500' },
                   { Icon: MessageCircle, href: 'https://vk.com/luna50.altai', label: 'ВКонтакте', color: 'text-blue-600' },
                   { Icon: MessageCircle, href: 'https://instagram.com/luna50.altai', label: 'Instagram', color: 'text-pink-500' },
                 ].map(({ Icon, href, label, color }) => (
